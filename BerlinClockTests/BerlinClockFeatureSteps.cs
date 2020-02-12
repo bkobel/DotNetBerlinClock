@@ -6,7 +6,7 @@ namespace BerlinClock
     [Binding]
     public class TheBerlinClockSteps
     {
-        private ITimeConverter _berlinClockConverter = new BerlinClockTimeConverter();
+        private ITimeConverter _timeConverter = new TimeConverter();
         private string _inputTime;
 
         [When(@"the time is ""(.*)""")]
@@ -18,7 +18,7 @@ namespace BerlinClock
         [Then(@"the clock should look like")]
         public void ThenTheClockShouldLookLike(string theExpectedBerlinClockOutput)
         {
-            Assert.AreEqual(_berlinClockConverter.Convert(_inputTime), theExpectedBerlinClockOutput);
+            Assert.AreEqual(_timeConverter.Convert(_inputTime), theExpectedBerlinClockOutput);
         }
     }
 }
