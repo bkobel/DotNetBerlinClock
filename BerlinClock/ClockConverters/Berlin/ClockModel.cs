@@ -9,5 +9,7 @@
         public ushort HighMinutes { get; set; }
 
         public ushort LowMinutes { get; set; }
+
+        public ushort Seconds { get; set; }
     }
 }

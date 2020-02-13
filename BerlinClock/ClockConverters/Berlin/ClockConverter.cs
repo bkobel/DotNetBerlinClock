@@ -26,7 +26,8 @@ namespace BerlinClock.ClockConverters.Berlin
                 HighHours = ParseHighHours(inputTime),
                 LowHours = ParseLowHours(inputTime),
                 HighMinutes = ParseHighMinutes(inputTime),
-                LowMinutes = ParseLowMinutes(inputTime)
+                LowMinutes = ParseLowMinutes(inputTime),
+                Seconds = ParseSeconds(inputTime)
             };
 
             return result;
@@ -50,6 +51,11 @@ namespace BerlinClock.ClockConverters.Berlin
         private ushort ParseLowMinutes(DateTime inputTime)
         {
             return (ushort)(inputTime.Minute % 5);
+        }
+
+        private ushort ParseSeconds(DateTime inputTime)
+        {
+            return inputTime.Second % 2 > 0 ? (ushort)0 : (ushort)1;
         }
     }
 }
