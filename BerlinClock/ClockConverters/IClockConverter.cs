@@ -1,9 +1,9 @@
-﻿using System;
+﻿using BerlinClock.Parsers;
 
 namespace BerlinClock.ClockConverters
 {
     public interface IClockConverter
     {
-        string ToStringRepresentation(DateTime inputTime);
+        string ToStringRepresentation(Double24HClockModel inputTime);
     }
 }

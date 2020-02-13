@@ -2,14 +2,23 @@
 {
     internal struct ClockModel
     {
-        public ushort HighHours { get; set; }
+        public ushort HighHours { get; }
 
-        public ushort LowHours { get; set; }
+        public ushort LowHours { get; }
 
-        public ushort HighMinutes { get; set; }
+        public ushort HighMinutes { get; }
 
-        public ushort LowMinutes { get; set; }
+        public ushort LowMinutes { get; }
 
-        public ushort Seconds { get; set; }
+        public ushort Seconds { get; }
+
+        public ClockModel(ushort highHours, ushort lowHours, ushort highMinutes, ushort lowMinutes, ushort seconds)
+        {
+            HighHours = highHours;
+            LowHours = lowHours;
+            HighMinutes = highMinutes;
+            LowMinutes = lowMinutes;
+            Seconds = seconds;
+        }
     }
 }

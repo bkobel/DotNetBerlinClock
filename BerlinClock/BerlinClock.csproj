@@ -52,6 +52,7 @@
     <Compile Include="ClockConverters\Berlin\FormatterStrategies\VisualStringFormatterStrategy.cs" />
     <Compile Include="ClockConverters\IClockConverter.cs" />
     <Compile Include="ClockConverters\IClockFactory.cs" />
+    <Compile Include="Parsers\Double24HClockModel.cs" />
     <Compile Include="Parsers\IStringTimeParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ITimeConverter.cs" />

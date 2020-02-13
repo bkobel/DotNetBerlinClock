@@ -1,5 +1,5 @@
 ﻿using BerlinClock.ClockConverters.Berlin.FormatterStrategies;
-using System;
+using BerlinClock.Parsers;
 
 namespace BerlinClock.ClockConverters.Berlin
 {
@@ -12,50 +12,47 @@ namespace BerlinClock.ClockConverters.Berlin
             _clockModelFormatterStrategy = clockModelFormatterStrategy;
         }
 
-        public string ToStringRepresentation(DateTime inputTime)
+        public string ToStringRepresentation(Double24HClockModel inputTime)
         {
             var clockModel = ParseClockModel(inputTime);
 
             return _clockModelFormatterStrategy.Format(clockModel);
         }
 
-        private ClockModel ParseClockModel(DateTime inputTime)
+        private ClockModel ParseClockModel(Double24HClockModel inputTime)
         {
-            var result = new ClockModel
-            {
-                HighHours = ParseHighHours(inputTime),
-                LowHours = ParseLowHours(inputTime),
-                HighMinutes = ParseHighMinutes(inputTime),
-                LowMinutes = ParseLowMinutes(inputTime),
-                Seconds = ParseSeconds(inputTime)
-            };
+            var result = new ClockModel(ParseHighHours(inputTime),
+                                        ParseLowHours(inputTime),
+                                        ParseHighMinutes(inputTime),
+                                        ParseLowMinutes(inputTime),
+                                        ParseSeconds(inputTime));
 
             return result;
         }
 
-        private ushort ParseHighHours(DateTime inputTime)
+        private ushort ParseHighHours(Double24HClockModel inputTime)
         {
-            return (ushort)(inputTime.Hour / 5);
+            return (ushort)(inputTime.Hours / 5);
         }
 
-        private ushort ParseLowHours(DateTime inputTime)
+        private ushort ParseLowHours(Double24HClockModel inputTime)
         {
-            return (ushort)(inputTime.Hour % 5);
+            return (ushort)(inputTime.Hours % 5);
         }
 
-        private ushort ParseHighMinutes(DateTime inputTime)
+        private ushort ParseHighMinutes(Double24HClockModel inputTime)
         {
-            return (ushort)(inputTime.Minute / 5);
+            return (ushort)(inputTime.Minutes / 5);
         }
 
-        private ushort ParseLowMinutes(DateTime inputTime)
+        private ushort ParseLowMinutes(Double24HClockModel inputTime)
         {
-            return (ushort)(inputTime.Minute % 5);
+            return (ushort)(inputTime.Minutes % 5);
         }
 
-        private ushort ParseSeconds(DateTime inputTime)
+        private ushort ParseSeconds(Double24HClockModel inputTime)
         {
-            return inputTime.Second % 2 > 0 ? (ushort)0 : (ushort)1;
+            return inputTime.Seconds % 2 > 0 ? (ushort)0 : (ushort)1;
         }
     }
 }
