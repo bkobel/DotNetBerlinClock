@@ -20,6 +20,8 @@ namespace BerlinClock.Parsers
                 throw new ArgumentException("Invalid time format provided, ISO 8601 is required");
             }
 
+
+
             return new Double24HClockModel(RetrieveUshort(timeRegexMatch.Groups[1]),
                                             RetrieveUshort(timeRegexMatch.Groups[2]),
                                             RetrieveUshort(timeRegexMatch.Groups[3]));
